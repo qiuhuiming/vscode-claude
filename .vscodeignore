@@ -2,7 +2,17 @@
 .vscode-test/**
 src/**
 .gitignore
+.git/**
 .yarnrc
 tsconfig.json
 **/*.map
 **/*.ts
+node_modules/**
+*.vsix
+test.sh
+DEBUG.md
+QUICK_START.md
+WHERE_IS_TERMINAL.md
+HOW_TO_PUBLISH.md
+INSTALL.md
+package-lock.json

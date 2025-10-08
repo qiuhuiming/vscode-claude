@@ -3,12 +3,17 @@
   "displayName": "UltraThink - Claude Code",
   "description": "Simple terminal-based Claude Code extension",
   "version": "0.0.1",
+  "publisher": "ultrathink",
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ultrathink"
+  },
   "activationEvents": [
     "onStartupFinished"
   ],
