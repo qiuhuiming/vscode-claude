@@ -60,8 +60,9 @@ code /root/code/vscode-claude
 
 1. **点击它！**
 2. 左边会出现 "New Terminal" 按钮
-3. 点一下，底部会出现一个终端
+3. 点一下，**中间编辑器区域**会出现一个终端标签页
 4. 终端会自动运行 `yolo` 命令
+5. 终端会显示在中间，就像打开文件一样！📝
 
 **成功了！！！** 🎊
 
@@ -90,13 +91,15 @@ code /root/code/vscode-claude
 
 ---
 
-## 🎮 测试多个终端
+## 🎮 测试多个终端（多个 Tab）
 
 1. 点左边的紫色圆圈
 2. 多点几次 "New Terminal"
-3. 看看是不是出现了 `UltraThink 1`, `UltraThink 2`, `UltraThink 3`...
+3. 看中间编辑器区域上面的标签栏
+4. 应该出现了多个 tab: `UltraThink 1`, `UltraThink 2`, `UltraThink 3`...
+5. 就像打开多个文件一样，每个终端都是一个标签页！
 
-每个都会自动运行 `yolo`！
+每个都会自动运行 `yolo`！你可以点击标签在它们之间切换！📑
 
 ---
 

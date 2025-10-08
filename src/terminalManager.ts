@@ -23,7 +23,8 @@ export class TerminalManager {
 
         const terminal = vscode.window.createTerminal({
             name: terminalName,
-            hideFromUser: false
+            hideFromUser: false,
+            location: vscode.TerminalLocation.Editor  // 🎯 显示在编辑器中间，不是底部！
         });
 
         this.terminals.push(terminal);
@@ -33,11 +34,11 @@ export class TerminalManager {
         console.log(`⚡ Sending 'yolo' command to ${terminalName}`);
         terminal.sendText('yolo');
 
-        // Show the terminal in split view on the right
+        // Show the terminal in editor area
         terminal.show(true); // true = preserveFocus
 
         this._onTerminalsChanged.fire();
-        console.log(`✅ Terminal ${terminalName} created successfully. Total terminals: ${this.terminals.length}`);
+        console.log(`✅ Terminal ${terminalName} created in EDITOR area. Total terminals: ${this.terminals.length}`);
 
         return terminal;
     }
