@@ -24,7 +24,10 @@ export class TerminalManager {
         const terminal = vscode.window.createTerminal({
             name: terminalName,
             hideFromUser: false,
-            location: vscode.TerminalLocation.Editor  // 🎯 显示在编辑器中间，不是底部！
+            location: {
+                viewColumn: vscode.ViewColumn.Beside,  // 🎯 自动分屏，显示在右边！
+                preserveFocus: true  // 不抢走焦点，你可以继续看左边
+            }
         });
 
         this.terminals.push(terminal);
