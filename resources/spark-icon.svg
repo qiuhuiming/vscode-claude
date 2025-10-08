@@ -1,0 +1,21 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background -->
+  <rect width="400" height="400" fill="#D77A61" rx="80"/>
+
+  <!-- White spark/star shape -->
+  <g transform="translate(200, 200)">
+    <!-- Center circle -->
+    <circle cx="0" cy="0" r="45" fill="white"/>
+
+    <!-- 12 rays -->
+    <rect x="-15" y="-140" width="30" height="95" rx="15" fill="white"/>
+    <rect x="-15" y="45" width="30" height="95" rx="15" fill="white"/>
+    <rect x="-140" y="-15" width="95" height="30" ry="15" fill="white"/>
+    <rect x="45" y="-15" width="95" height="30" ry="15" fill="white"/>
+
+    <rect x="-15" y="-140" width="30" height="95" rx="15" fill="white" transform="rotate(45)"/>
+    <rect x="-15" y="45" width="30" height="95" rx="15" fill="white" transform="rotate(45)"/>
+    <rect x="-140" y="-15" width="95" height="30" ry="15" fill="white" transform="rotate(45)"/>
+    <rect x="45" y="-15" width="95" height="30" ry="15" fill="white" transform="rotate(45)"/>
+  </g>
+</svg>

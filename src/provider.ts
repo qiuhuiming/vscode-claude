@@ -30,7 +30,7 @@ export class UltraThinkProvider implements vscode.TreeDataProvider<TreeItem> {
                 command: 'ultrathink.newTerminal',
                 title: 'Create New Terminal'
             };
-            newTerminalItem.iconPath = new vscode.ThemeIcon('add');
+            newTerminalItem.iconPath = vscode.Uri.file(__dirname + '/../resources/spark-icon.svg');
             items.push(newTerminalItem);
 
             // Add list of active terminals

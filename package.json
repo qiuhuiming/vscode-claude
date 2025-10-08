@@ -24,7 +24,7 @@
         {
           "id": "ultrathink",
           "title": "Claude Code",
-          "icon": "resources/claude-icon.svg"
+          "icon": "resources/spark-icon.svg"
         }
       ]
     },
@@ -40,7 +40,10 @@
       {
         "command": "ultrathink.newTerminal",
         "title": "Ultrathink",
-        "icon": "$(add)"
+        "icon": {
+          "light": "resources/spark-icon.svg",
+          "dark": "resources/spark-icon.svg"
+        }
       },
       {
         "command": "ultrathink.showTerminal",
@@ -50,7 +53,16 @@
         "command": "ultrathink.checkStatus",
         "title": "UltraThink: Check Extension Status"
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "ultrathink.newTerminal",
+          "group": "navigation",
+          "when": "editorIsOpen"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
