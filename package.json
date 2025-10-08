@@ -36,6 +36,10 @@
         "command": "ultrathink.newTerminal",
         "title": "New Terminal",
         "icon": "$(add)"
+      },
+      {
+        "command": "ultrathink.showTerminal",
+        "title": "Show Terminal"
       }
     ]
   },

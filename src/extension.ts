@@ -10,8 +10,8 @@ export function activate(context: vscode.ExtensionContext) {
     // Initialize terminal manager
     terminalManager = new TerminalManager();
 
-    // Register the tree data provider
-    const provider = new UltraThinkProvider();
+    // Register the tree data provider with terminal manager
+    const provider = new UltraThinkProvider(terminalManager);
     const treeView = vscode.window.createTreeView('ultrathinkView', {
         treeDataProvider: provider,
         showCollapseAll: false
@@ -22,6 +22,11 @@ export function activate(context: vscode.ExtensionContext) {
         terminalManager.createTerminal();
     });
 
+    // Register command to show a specific terminal
+    const showTerminalCommand = vscode.commands.registerCommand('ultrathink.showTerminal', (terminal: vscode.Terminal) => {
+        terminalManager.showTerminal(terminal);
+    });
+
     // Create initial terminal when view is first visible
     treeView.onDidChangeVisibility((e) => {
         if (e.visible && terminalManager.getTerminals().length === 0) {
@@ -29,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    context.subscriptions.push(treeView, newTerminalCommand);
+    context.subscriptions.push(treeView, newTerminalCommand, showTerminalCommand);
 }
 
 export function deactivate() {
