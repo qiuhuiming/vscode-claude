@@ -50,7 +50,7 @@ cd /root/code/vscode-claude
 现在：
 1. **关闭** VSCode/Cursor（完全关掉）
 2. **重新打开** VSCode/Cursor
-3. **看左边** 有没有紫色圆圈 🟣
+3. **看左边** 有没有橙色圆圈 🟠
 4. **点它！** 开始用！
 
 ---
@@ -108,7 +108,7 @@ npm run compile
 ## 🎮 测试是否成功
 
 1. 重启 VSCode/Cursor
-2. 看左边活动栏有没有紫色圆圈 🟣
+2. 看左边活动栏有没有橙色圆圈 🟠
 3. 点它！
 4. 点 "New Terminal"
 5. 右边分屏出现终端！

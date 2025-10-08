@@ -1,6 +1,6 @@
 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Background circle -->
-  <circle cx="14" cy="14" r="13" fill="#6B46C1" stroke="#8B5CF6" stroke-width="2"/>
+  <circle cx="14" cy="14" r="13" fill="#F97316" stroke="#FB923C" stroke-width="2"/>
 
   <!-- Letter C for Claude -->
   <path d="M18 8 C18 8, 10 8, 10 14 C10 20, 18 20, 18 20"
@@ -10,5 +10,5 @@
         fill="none"/>
 
   <!-- Small dot accent -->
-  <circle cx="19" cy="9" r="1.5" fill="#FCD34D"/>
+  <circle cx="19" cy="9" r="1.5" fill="#FEF3C7"/>
 </svg>

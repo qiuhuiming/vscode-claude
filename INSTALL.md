@@ -21,7 +21,7 @@ cd /root/code/vscode-claude
 ## ✨ 安装成功后
 
 1. 重启 VSCode/Cursor
-2. 看左边有紫色圆圈 🟣
+2. 看左边有橙色圆圈 🟠
 3. 点它！
 4. 点 "New Terminal"
 5. 右边分屏出现终端运行 `yolo`！
