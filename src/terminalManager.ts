@@ -18,8 +18,11 @@ export class TerminalManager {
     }
 
     createTerminal(): vscode.Terminal {
+        const terminalName = `UltraThink ${this.terminalCounter}`;
+        console.log(`🔧 Creating terminal: ${terminalName}`);
+
         const terminal = vscode.window.createTerminal({
-            name: `UltraThink ${this.terminalCounter}`,
+            name: terminalName,
             hideFromUser: false
         });
 
@@ -27,12 +30,14 @@ export class TerminalManager {
         this.terminalCounter++;
 
         // Send the 'yolo' command to the terminal
+        console.log(`⚡ Sending 'yolo' command to ${terminalName}`);
         terminal.sendText('yolo');
 
         // Show the terminal in split view on the right
         terminal.show(true); // true = preserveFocus
 
         this._onTerminalsChanged.fire();
+        console.log(`✅ Terminal ${terminalName} created successfully. Total terminals: ${this.terminals.length}`);
 
         return terminal;
     }

@@ -34,12 +34,16 @@
     "commands": [
       {
         "command": "ultrathink.newTerminal",
-        "title": "New Terminal",
+        "title": "UltraThink: New Terminal",
         "icon": "$(add)"
       },
       {
         "command": "ultrathink.showTerminal",
-        "title": "Show Terminal"
+        "title": "UltraThink: Show Terminal"
+      },
+      {
+        "command": "ultrathink.checkStatus",
+        "title": "UltraThink: Check Extension Status"
       }
     ]
   },
