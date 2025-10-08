@@ -39,7 +39,7 @@
     "commands": [
       {
         "command": "ultrathink.newTerminal",
-        "title": "UltraThink: New Terminal",
+        "title": "Ultrathink",
         "icon": "$(add)"
       },
       {
