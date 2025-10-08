@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:ultrathinkView"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
