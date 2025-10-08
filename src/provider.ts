@@ -14,10 +14,15 @@ export class UltraThinkProvider implements vscode.TreeDataProvider<TreeItem> {
 
     getChildren(element?: TreeItem): Thenable<TreeItem[]> {
         if (!element) {
-            // Root level
-            return Promise.resolve([
-                new TreeItem('Click + to create a new terminal', vscode.TreeItemCollapsibleState.None)
-            ]);
+            // Root level - show action item to create new terminal
+            const newTerminalItem = new TreeItem('New Terminal', vscode.TreeItemCollapsibleState.None);
+            newTerminalItem.command = {
+                command: 'ultrathink.newTerminal',
+                title: 'Create New Terminal'
+            };
+            newTerminalItem.iconPath = new vscode.ThemeIcon('add');
+
+            return Promise.resolve([newTerminalItem]);
         }
         return Promise.resolve([]);
     }
