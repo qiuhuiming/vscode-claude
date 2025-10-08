@@ -21,12 +21,15 @@ export class TerminalManager {
         const terminalName = `UltraThink ${this.terminalCounter}`;
         console.log(`🔧 Creating terminal: ${terminalName}`);
 
+        // 🎯 使用固定的 ViewColumn.Two (右边第一列)
+        // 第1个终端：会在右边创建新的分屏
+        // 第2+个终端：会在右边同一个分屏里添加 tab
         const terminal = vscode.window.createTerminal({
             name: terminalName,
             hideFromUser: false,
             location: {
-                viewColumn: vscode.ViewColumn.Beside,  // 🎯 自动分屏，显示在右边！
-                preserveFocus: true  // 不抢走焦点，你可以继续看左边
+                viewColumn: vscode.ViewColumn.Two,  // 固定在右边第一列
+                preserveFocus: true  // 不抢走焦点
             }
         });
 
@@ -41,7 +44,7 @@ export class TerminalManager {
         terminal.show(true); // true = preserveFocus
 
         this._onTerminalsChanged.fire();
-        console.log(`✅ Terminal ${terminalName} created in EDITOR area. Total terminals: ${this.terminals.length}`);
+        console.log(`✅ Terminal ${terminalName} created. Total terminals: ${this.terminals.length}`);
 
         return terminal;
     }
