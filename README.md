@@ -1,10 +1,10 @@
-# 🟠 UltraThink - Claude Code Extension
+# ✨ UltraThink - Claude Code Extension
 
 一个超级简单的 VSCode/Cursor 扩展，自动在右边分屏运行终端！
 
 ## ✨ 特性
 
-- 🟠 **橙色圆圈图标** - 点击左边活动栏的橙色图标
+- ✨ **Claude 官方图标** - 点击左边活动栏的 Claude 图标
 - 📺 **右边分屏** - 终端自动在右边分屏显示
 - 🎯 **自动运行** - 每个终端自动执行 `yolo` 命令
 - 📑 **多标签支持** - 创建多个终端，都在右边窗口显示为 tab
@@ -21,7 +21,7 @@ cd /root/code/vscode-claude
 
 然后：
 1. 重启 VSCode/Cursor
-2. 看左边有没有橙色圆圈 🟠
+2. 看左边有没有 Claude 图标 ✨
 3. 点它！
 
 ### 方法2：开发模式
@@ -42,7 +42,7 @@ code .  # 打开 VSCode
 
 ## 🎯 使用方法
 
-1. 点击左边活动栏的 **橙色圆圈** 🟠
+1. 点击左边活动栏的 **Claude 图标** ✨
 2. 侧边栏出现 "New Terminal" 按钮
 3. 点击后，屏幕**自动分屏**：
    - **左边** = 你的代码
@@ -53,7 +53,7 @@ code .  # 打开 VSCode
 
 ```
 ┌──────────────┬──────────────┐
-│ 左边         │ 🟠 右边      │
+│ 左边         │ ✨ 右边      │
 │              │ [Terminal 1] │
 │ 你的代码     │ [Terminal 2] │
 │              │ [Terminal 3] │

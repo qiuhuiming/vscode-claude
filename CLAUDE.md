@@ -36,7 +36,21 @@ UltraThink is a VSCode/Cursor extension that provides an activity bar icon to cr
 
 - **Split view behavior**: All terminals use `vscode.ViewColumn.Two` as a fixed location. The first terminal creates a new split on the right; subsequent terminals become tabs in the same right panel.
 - **TreeView registration**: The view is registered as `ultrathinkView` which corresponds to the `contributes.views.ultrathink` array in package.json
-- **Activity bar icon**: Defined in package.json as `viewsContainers.activitybar` with ID `ultrathink` and orange icon at `resources/claude-icon.svg`
+- **Activity bar icon**: Defined in package.json as `viewsContainers.activitybar` with ID `ultrathink`, using official Claude logo at `resources/spark-icon.svg`
+
+### Icon System
+
+- **Activity bar icon**: `resources/spark-icon.svg` - Official Claude AI symbol, monochrome (#C5C5C5), 24x24
+- **Command icons** (editor title bar):
+  - `resources/spark-icon-light.svg` - For light themes (#424242)
+  - `resources/spark-icon-dark.svg` - For dark themes (#C5C5C5)
+- **TreeView item**: Uses built-in `ThemeIcon('zap')`
+- **Icon source**: [Bootstrap Icons - Claude](https://icons.getbootstrap.com/icons/claude/)
+
+**Important**: VSCode/Cursor activity bar and command icons must be:
+- Monochrome (single color)
+- No background
+- 16x16 or 24x24 size
 
 ## Development Commands
 
