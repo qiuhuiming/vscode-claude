@@ -32,7 +32,8 @@
       "ultrathink": [
         {
           "id": "ultrathinkView",
-          "name": "UltraThink"
+          "name": "UltraThink",
+          "icon": "resources/spark-icon-dark.svg"
         }
       ]
     },
