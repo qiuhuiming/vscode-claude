@@ -41,8 +41,8 @@
         "command": "ultrathink.newTerminal",
         "title": "Ultrathink",
         "icon": {
-          "light": "resources/spark-icon.svg",
-          "dark": "resources/spark-icon.svg"
+          "light": "resources/spark-icon-light.svg",
+          "dark": "resources/spark-icon-dark.svg"
         }
       },
       {
