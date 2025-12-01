@@ -39,7 +39,7 @@ export class SessionManager {
         const workspacePath = workspaceFolders[0].uri.fsPath;
         // Convert path to Claude's directory format: /Users/foo.bar/code -> -Users-foo-bar-code
         // Claude replaces both '/' and '.' with '-'
-        const claudeProjectName = workspacePath.replace(/[\/\.]/g, '-');
+        const claudeProjectName = workspacePath.replace(/[\/\._]/g, '-');
         const claudeDir = path.join(os.homedir(), '.claude', 'projects', claudeProjectName);
 
         return claudeDir;
