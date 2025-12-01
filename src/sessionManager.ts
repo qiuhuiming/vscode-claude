@@ -47,22 +47,36 @@ export class SessionManager {
 
     /**
      * Parse a session file to extract summary
+     * Returns null if session has no summary or no actual conversation content
      */
     private parseSessionFile(filePath: string): string | null {
         try {
             const content = fs.readFileSync(filePath, 'utf-8');
             const lines = content.split('\n');
 
+            let summary: string | null = null;
+            let hasUserMessage = false;
+
             for (const line of lines) {
                 if (!line.trim()) continue;
                 try {
                     const json = JSON.parse(line);
                     if (json.type === 'summary' && json.summary) {
-                        return json.summary;
+                        summary = json.summary;
+                    }
+                    // Check if there's at least one user message (actual conversation)
+                    if (json.type === 'user') {
+                        hasUserMessage = true;
                     }
                 } catch {
                     continue;
                 }
+            }
+
+            // Only return summary if session has actual conversation content
+            // Sessions with only summary but no user messages cannot be resumed
+            if (summary && hasUserMessage) {
+                return summary;
             }
         } catch (err) {
             console.error(`Error reading session file: ${filePath}`, err);
