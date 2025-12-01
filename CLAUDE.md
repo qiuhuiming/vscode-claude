@@ -8,6 +8,7 @@ UltraThink is a VSCode/Cursor extension that provides an activity bar icon to cr
 - Split to the right side of the editor (ViewColumn.Two)
 - Execute the `yolo` command on creation
 - Open as tabs in the same right panel when multiple terminals are created
+- List and resume previous Claude CLI sessions
 
 ## Architecture
 
@@ -15,9 +16,8 @@ UltraThink is a VSCode/Cursor extension that provides an activity bar icon to cr
 
 1. **extension.ts** - Extension lifecycle and command registration
    - Activates on startup (`onStartupFinished`)
-   - Registers three commands: `ultrathink.newTerminal`, `ultrathink.showTerminal`, `ultrathink.checkStatus`
-   - Creates initial terminal when view becomes visible for the first time
-   - Manages TerminalManager and UltraThinkProvider instances
+   - Registers five commands: `ultrathink.newTerminal`, `ultrathink.showTerminal`, `ultrathink.checkStatus`, `ultrathink.resumeSession`, `ultrathink.refreshSessions`
+   - Manages TerminalManager, SessionManager and UltraThinkProvider instances
 
 2. **terminalManager.ts** - Terminal lifecycle management
    - Maintains array of active terminals and counter for naming
@@ -28,9 +28,19 @@ UltraThink is a VSCode/Cursor extension that provides an activity bar icon to cr
 
 3. **provider.ts** - TreeView data provider for sidebar
    - Implements `vscode.TreeDataProvider<TreeItem>` interface
-   - Displays "New Terminal" button with add icon
-   - Lists all active terminals below the button
-   - Refreshes tree when terminals change via `onTerminalsChanged` event
+   - Displays "New Terminal" button with zap icon
+   - Shows Sessions section with inline refresh button
+   - Shows Terminals section with active terminals
+   - Refreshes tree when terminals or sessions change
+
+4. **sessionManager.ts** - Claude CLI session management
+   - Reads sessions from `~/.claude/projects/{project-path}/`
+   - Path conversion: replaces `/` and `.` with `-`
+   - Parses JSONL files for `type: "summary"` entries
+   - Filters out empty sessions (no summary)
+   - Sorts by modification time, limits to 10 most recent
+   - Emits `onSessionsChanged` event when sessions refresh
+   - `resumeSession(id)` creates terminal and runs `yolo -r {session-id}`
 
 ### Key Technical Details
 
@@ -97,4 +107,4 @@ When creating a new terminal via `terminalManager.createTerminal()`:
 ## Notes
 
 - The extension uses Chinese comments in some places (particularly terminalManager.ts) to explain the split view logic
-- The project was developed in 4 milestones: basic structure → activity bar + sidebar → terminal integration + yolo command → multi-tab + right split
+- The project was developed in 5 milestones: basic structure → activity bar + sidebar → terminal integration + yolo command → multi-tab + right split → session management

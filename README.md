@@ -8,6 +8,7 @@
 - 📺 **右边分屏** - 终端自动在右边分屏显示
 - 🎯 **自动运行** - 每个终端自动执行 `yolo` 命令
 - 📑 **多标签支持** - 创建多个终端，都在右边窗口显示为 tab
+- 📋 **Session 管理** - 查看和恢复之前的 Claude 对话
 - ⚡ **一键安装** - 使用 `publish.sh` 一键打包安装
 
 ## 🚀 快速开始
@@ -43,14 +44,29 @@ code .  # 打开 VSCode
 ## 🎯 使用方法
 
 1. 点击左边活动栏的 **Claude 图标** ✨
-2. 侧边栏出现 "New Terminal" 按钮
-3. 点击后，屏幕**自动分屏**：
+2. 侧边栏显示：
+   - **New Terminal** 按钮 - 创建新终端
+   - **Sessions** 区域 - 之前的 Claude 对话（点击可恢复）
+   - **Terminals** 区域 - 当前活动终端
+3. 点击 "New Terminal" 后，屏幕**自动分屏**：
    - **左边** = 你的代码
    - **右边** = 终端（自动运行 `yolo`）
-4. 再点 "New Terminal" 会在右边加 tab，不会再分屏
+4. 点击 Session 可以恢复之前的对话
 
 ## 🎨 效果图
 
+**侧边栏结构：**
+```
+ULTRATHINK
+├── ⚡ New Terminal
+├── 🕐 ── Sessions ──  [🔄]
+│   ├── 🔄 Fix login bug  (2m ago)
+│   └── 🔄 Add dark mode  (1h ago)
+└── 💻 ── Terminals ──
+    └── 💻 UltraThink 1
+```
+
+**分屏效果：**
 ```
 ┌──────────────┬──────────────┐
 │ 左边         │ ✨ 右边      │
@@ -96,12 +112,13 @@ cursor --install-extension ultrathink-0.0.1.vsix
 
 ## 🤝 贡献
 
-这个项目分 4 个 milestone 开发：
+这个项目分 5 个 milestone 开发：
 
 1. 基础扩展结构
 2. 活动栏图标 + 侧边栏
 3. 终端集成 + 自动运行 `yolo`
 4. 多 tab 支持 + 右边分屏
+5. Session 管理 + 恢复对话
 
 查看 git 历史了解更多！
 

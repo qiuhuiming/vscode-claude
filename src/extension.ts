@@ -1,8 +1,10 @@
 import * as vscode from 'vscode';
 import { UltraThinkProvider } from './provider';
 import { TerminalManager } from './terminalManager';
+import { SessionManager } from './sessionManager';
 
 let terminalManager: TerminalManager;
+let sessionManager: SessionManager;
 
 export function activate(context: vscode.ExtensionContext) {
     console.log('🚀 UltraThink extension is now active!');
@@ -12,8 +14,12 @@ export function activate(context: vscode.ExtensionContext) {
         terminalManager = new TerminalManager();
         console.log('✅ Terminal manager initialized');
 
-        // Register the tree data provider with terminal manager
-        const provider = new UltraThinkProvider(terminalManager);
+        // Initialize session manager
+        sessionManager = new SessionManager();
+        console.log('✅ Session manager initialized');
+
+        // Register the tree data provider with terminal manager and session manager
+        const provider = new UltraThinkProvider(terminalManager, sessionManager);
         const treeView = vscode.window.createTreeView('ultrathinkView', {
             treeDataProvider: provider,
             showCollapseAll: false
@@ -32,14 +38,29 @@ export function activate(context: vscode.ExtensionContext) {
             terminalManager.showTerminal(terminal);
         });
 
+        // Register command to resume a session
+        const resumeSessionCommand = vscode.commands.registerCommand('ultrathink.resumeSession', (sessionId: string) => {
+            console.log('📝 Command: ultrathink.resumeSession executed for', sessionId);
+            sessionManager.resumeSession(sessionId);
+        });
+
+        // Register command to refresh sessions
+        const refreshSessionsCommand = vscode.commands.registerCommand('ultrathink.refreshSessions', () => {
+            console.log('📝 Command: ultrathink.refreshSessions executed');
+            sessionManager.refreshSessions();
+        });
+
         // Register diagnostic command
         const checkStatusCommand = vscode.commands.registerCommand('ultrathink.checkStatus', () => {
             const terminals = terminalManager.getTerminals();
+            const sessions = sessionManager.getSessions();
             const statusMessage = `
 UltraThink Extension Status:
 ✅ Extension is active
 📊 Active terminals: ${terminals.length}
 ${terminals.map((t, i) => `  ${i + 1}. ${t.name}`).join('\n')}
+📋 Sessions: ${sessions.length}
+${sessions.map((s, i) => `  ${i + 1}. ${s.summary}`).join('\n')}
 
 Check the Debug Console for detailed logs.
             `.trim();
@@ -56,16 +77,26 @@ Check the Debug Console for detailed logs.
 
         console.log('✅ Commands registered');
 
-        // Create initial terminal when view is first visible
+        // Refresh sessions when view becomes visible
         treeView.onDidChangeVisibility((e) => {
             console.log(`👁️  View visibility changed: ${e.visible}`);
-            if (e.visible && terminalManager.getTerminals().length === 0) {
-                console.log('🔨 Creating initial terminal');
-                terminalManager.createTerminal();
+            if (e.visible) {
+                // Refresh sessions when view becomes visible
+                sessionManager.refreshSessions();
             }
         });
 
-        context.subscriptions.push(treeView, newTerminalCommand, showTerminalCommand, checkStatusCommand);
+        // Initial session load
+        sessionManager.refreshSessions();
+
+        context.subscriptions.push(
+            treeView,
+            newTerminalCommand,
+            showTerminalCommand,
+            resumeSessionCommand,
+            refreshSessionsCommand,
+            checkStatusCommand
+        );
 
         console.log('✅ UltraThink extension fully activated');
         vscode.window.showInformationMessage('UltraThink extension activated! Click the Claude Code icon in the activity bar.');
@@ -79,5 +110,8 @@ export function deactivate() {
     console.log('👋 UltraThink extension is deactivating');
     if (terminalManager) {
         terminalManager.dispose();
+    }
+    if (sessionManager) {
+        sessionManager.dispose();
     }
 }

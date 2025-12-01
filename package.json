@@ -53,6 +53,15 @@
       {
         "command": "ultrathink.checkStatus",
         "title": "UltraThink: Check Extension Status"
+      },
+      {
+        "command": "ultrathink.resumeSession",
+        "title": "UltraThink: Resume Session"
+      },
+      {
+        "command": "ultrathink.refreshSessions",
+        "title": "UltraThink: Refresh Sessions",
+        "icon": "$(refresh)"
       }
     ],
     "menus": {
@@ -61,6 +70,13 @@
           "command": "ultrathink.newTerminal",
           "group": "navigation",
           "when": "editorIsOpen"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "ultrathink.refreshSessions",
+          "when": "view == ultrathinkView && viewItem == sessionsHeader",
+          "group": "inline"
         }
       ]
     }
